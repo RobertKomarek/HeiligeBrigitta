@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HeiligeBrigitta.Views.GebetePage"
+             xmlns:vm="clr-namespace:HeiligeBrigitta.ViewModels"
+             xmlns:model="clr-namespace:HeiligeBrigitta.Models"
+             xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.Core;assembly=Xamarin.CommunityToolkit"
+             xmlns:pcv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:magic="http://magic.com/schemas/gradients"
+             x:DataType="vm:GebeteViewModel"
+             Visual="Material"
+             BackgroundColor="Black"
+             Title="Verehrung der 5480 Wunden Jesu">
+
+    <ContentPage.BindingContext>
+        <vm:GebeteViewModel/>
+    </ContentPage.BindingContext>
+
+        <Grid>
+        <magic:GradientView>
+            <magic:CssGradientSource>
+                <x:String>
+                    <![CDATA[
+                        repeating-linear-gradient(135deg, hsla(31,0%,65%,0.2) 0px, hsla(31,0%,65%,0.2) 0px,transparent 0px, transparent 1px,hsla(31,0%,65%,0.2) 1px, hsla(31,0%,65%,0.2) 4px,transparent 4px, transparent 5px,hsla(31,0%,65%,0.2) 5px, hsla(31,0%,65%,0.2) 8px),repeating-linear-gradient(45deg, hsla(31,0%,65%,0.2) 0px, hsla(31,0%,65%,0.2) 0px,transparent 0px, transparent 1px,hsla(31,0%,65%,0.2) 1px, hsla(31,0%,65%,0.2) 4px,transparent 4px, transparent 5px,hsla(31,0%,65%,0.2) 5px, hsla(31,0%,65%,0.2) 8px),linear-gradient(180deg, rgb(234, 234, 234),rgb(12, 12, 12))
+                    ]]>
+                </x:String>
+            </magic:CssGradientSource>
+        </magic:GradientView>
+
+        <StackLayout>
+            <pcv:PancakeView HeightRequest="100" CornerRadius="0,0,20,20" VerticalOptions="Start">
+                <Image Source="brigitta.jpg" Aspect="AspectFill"/>
+            </pcv:PancakeView>
+
+            <IndicatorView x:Name="myIndicatorView" 
+                           IndicatorColor="LightGray" 
+                           SelectedIndicatorColor="Red" 
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Padding="10"/>
+
+            <CarouselView ItemsSource="{Binding GebetBrigitta}"
+                    IndicatorView="myIndicatorView"
+                    Margin="15,0,15,0">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate x:DataType="model:FuenfzehnGebete">
+                        <pcv:PancakeView CornerRadius="25,25,0,-15">
+                            <!--<Frame.Background>
+                                <LinearGradientBrush EndPoint="0,1">
+                                    <GradientStop Color="#F9F2DF" Offset="0.25"/>
+                                    <GradientStop Color="White" Offset="0.75" />
+                                </LinearGradientBrush>
+                            </Frame.Background>-->
+                            <Grid>
+                                 <magic:GradientView>
+                                    <magic:CssGradientSource>
+                                        <x:String>
+                                            <![CDATA[
+                                             radial-gradient(circle at 64% 7%, rgba(55, 55, 55,0.06) 0%, rgba(55, 55, 55,0.06) 50%,rgba(228, 228, 228,0.06) 50%, rgba(228, 228, 228,0.06) 100%),radial-gradient(circle at 71% 6%, rgba(182, 182, 182,0.06) 0%, rgba(182, 182, 182,0.06) 50%,rgba(86, 86, 86,0.06) 50%, rgba(86, 86, 86,0.06) 100%),radial-gradient(circle at 94% 76%, rgba(158, 158, 158,0.06) 0%, rgba(158, 158, 158,0.06) 50%,rgba(76, 76, 76,0.06) 50%, rgba(76, 76, 76,0.06) 100%),linear-gradient(90deg, rgb(250, 250, 250),rgb(220, 220, 220))
+                                            ]]>
+                                        </x:String>
+                                    </magic:CssGradientSource>
+                                </magic:GradientView>
+                                <StackLayout>
+                                    <Label Text="{Binding Ueberschrift}" TextColor="Black" FontSize="Large" FontAttributes="Bold"
+                                            HorizontalTextAlignment="Center" Margin="5"/>
+                                    <BoxView HeightRequest="0.7" Color="Black" Margin="10,0,10,0" />
+                                    <ScrollView>
+                                        <StackLayout>
+                                            <pcv:PancakeView Border="{pcv:BorderMarkup Color=LightGray, Thickness=5}" Sides="64" Margin="10">
+                                                <Image Source="{Binding Hintergrundbild}" Aspect="AspectFill"/>
+                                            </pcv:PancakeView>
+                                            <Label Text="{Binding Gebet}" TextColor="Black" FontSize="Large" HorizontalTextAlignment="Center" Margin="5"/>
+                                            <BoxView HeightRequest="0.7" Color="Gray" Margin="10,0,10,0" />
+                                            <Label Text="{Binding Anschlussgebete}" TextColor="Black" FontSize="24" HorizontalTextAlignment="Center" FontFamily="OldStandardBold"/>
+                                            <Label Text="{Binding Anrufung}" TextColor="DarkRed"  FontSize="24" FontFamily="OldStandardBold" HorizontalTextAlignment="Center" FontAttributes="Italic"/>
+                                            <!--<Label Padding="10" Text="{Binding Source={RelativeSource AncestorType={x:Type vm:GebeteViewModel}}, Path=VaterUnserAveMaria}" FontSize="Medium" FontAttributes="Italic" TextColor="Black"  HorizontalTextAlignment="Center"/>
+                                            <Label Padding="10" Text="{Binding Source={RelativeSource AncestorType={x:Type vm:GebeteViewModel}}, Path=Anrufung}" FontSize="Medium" FontAttributes="Italic" TextColor="Black"  HorizontalTextAlignment="Center" />-->
+                                         </StackLayout>
+                                    </ScrollView>
+                                </StackLayout>
+                            </Grid>
+                        </pcv:PancakeView>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+        </StackLayout>
+    </Grid>
+<!--<StackLayout>
+    <Button Margin="10,0,10,5" Text="Zurück zu Seite 1" Command="{Binding ZurueckSeiteEinsCommand}" />
+</StackLayout>-->
+</ContentPage>
+    
+        
+
+        
+
+   

@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:vm="clr-namespace:HeiligeBrigitta.ViewModels"
+             xmlns:fontawesome="clr-namespace:FontAwesome" xmlns:magic="http://magic.com/schemas/gradients"
+             x:Class="HeiligeBrigitta.Views.InfoPage"
+             Title="Info">
+
+    <!--<ContentPage.IconImageSource>
+        <FontImageSource Glyph="{x:Static fontawesome:FontAwesomeIcons.InfoCircle}" FontFamily="FA-S"/>
+    </ContentPage.IconImageSource>-->
+
+    <ContentPage.BindingContext>
+        <vm:InfoPageViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Background>
+        <LinearGradientBrush EndPoint="0,1">
+            <GradientStop Color="Gray" Offset="0.1"/>
+            <GradientStop Color="DarkGray" Offset="0.30"/>
+            <!--<GradientStop Color="White" Offset="0.75"/>-->
+            <GradientStop Color="Gray" Offset="1.0"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+     <Grid>
+        <magic:GradientView>
+            <magic:CssGradientSource>
+                <x:String>
+                    <![CDATA[
+                        repeating-linear-gradient(135deg, hsla(31,0%,65%,0.2) 0px, hsla(31,0%,65%,0.2) 0px,transparent 0px, transparent 1px,hsla(31,0%,65%,0.2) 1px, hsla(31,0%,65%,0.2) 4px,transparent 4px, transparent 5px,hsla(31,0%,65%,0.2) 5px, hsla(31,0%,65%,0.2) 8px),repeating-linear-gradient(45deg, hsla(31,0%,65%,0.2) 0px, hsla(31,0%,65%,0.2) 0px,transparent 0px, transparent 1px,hsla(31,0%,65%,0.2) 1px, hsla(31,0%,65%,0.2) 4px,transparent 4px, transparent 5px,hsla(31,0%,65%,0.2) 5px, hsla(31,0%,65%,0.2) 8px),linear-gradient(180deg, rgb(234, 234, 234),rgb(12, 12, 12))
+                    ]]>
+                </x:String>
+            </magic:CssGradientSource>
+        </magic:GradientView>
+
+        <ListView ItemsSource="{Binding Info}"
+                  HasUnevenRows="True" 
+                  CachingStrategy="RecycleElement"
+                  SelectionMode="None">
+            <ListView.Header>
+                <StackLayout>
+                    <Label Text="Das Leiden Christi nach den Offenbarungen der Hl. Brigitta von Schweden" Margin="0,5,0,0" 
+                           FontFamily="OldStandardBold" HorizontalTextAlignment="Center" FontSize="26" TextColor="Black" Opacity="0.8"/>
+                    <BoxView HeightRequest="0.7" Color="Gray" Margin="10,0,10,0" />
+                </StackLayout>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Label Text="{Binding .}" TextColor="White" FontSize="Large" HorizontalTextAlignment="Center" Margin="5,10,5,10" />
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+     </Grid>
+    
+</ContentPage>

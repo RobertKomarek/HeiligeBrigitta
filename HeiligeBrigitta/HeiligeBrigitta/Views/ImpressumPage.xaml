@@ -25,7 +25,7 @@
             </magic:CssGradientSource>
         </magic:GradientView>
 
-        <StackLayout Padding="20" Spacing="20" HorizontalOptions="Center" VerticalOptions="Center">
+        <StackLayout Margin="50,20,50,20" Spacing="20" HorizontalOptions="Center" VerticalOptions="Center">
 
             <!--<WebView Source="creativecommonszero.svg" HeightRequest="50" WidthRequest="50" />-->
             <Label Padding="20" FontFamily="OldStandardBold" Text="5480 WUNDEN JESU" HorizontalTextAlignment="Center" FontAttributes="Bold"
